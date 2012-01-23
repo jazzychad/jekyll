@@ -21,6 +21,7 @@ module Jekyll
     attr_accessor :site
     attr_accessor :data, :content, :output, :ext
     attr_accessor :date, :slug, :published, :tags, :categories
+    attr_accessor :comments_enabled
 
     # Initialize this Bit instance.
     #   +site+ is the Site
@@ -220,6 +221,7 @@ module Jekyll
         "id"         => self.id,
         "categories" => self.categories,
         "folded" => (self.content.match("<!--more-->") ? true : false),
+        "comments_enabled" => (self.data["comments"] == true || self.data["comments_enabled"] == true ? true : false),
         "next"       => self.next,
         "previous"   => self.previous,
         "tags"       => self.tags,
